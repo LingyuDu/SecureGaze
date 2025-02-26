@@ -86,7 +86,11 @@ We now demonstrate the effectiveness of SecureGaze in mitigating backdoor attack
 </table>
 
 ## Codes and Backdoored Gaze Estimation Models
-We develop SecureGaze using TensorFlow-gpu 2.9.0. The 
+We develop SecureGaze using TensorFlow-gpu 2.9.0.
+
+* The backdoored gaze estimation model with a piece of white tape as the trigger is available at [physical-world backdoored model](https://drive.google.com/drive/folders/1fr41I6Y3moDnNB6XCytBWUXq8Q-5FS5a?usp=sharing).
+* CL_model.py defines the architecture of the generative model and the gaze estimator.
+* 
 ## Citation 
 
 Please cite the following paper in your publications if the code helps your research.
