@@ -46,7 +46,7 @@ We propose SecureGaze to identify backdoored gaze estimation models by reverse-e
 **This allows SecureGaze to reverse-engineer the trigger function without enumerating all the potential target gaze directions**.
 
 <div align=center>
-<img src="https://github.com/LingyuDu/SecureGaze/blob/main/figures/over_view.png" alt="My Image" width="800"/>
+<img src="https://github.com/LingyuDu/SecureGaze/blob/main/figures/over_view.png" alt="My Image" width="500"/>
   <br>Backdoor attacks on gaze estimation model.
 </div>
 
