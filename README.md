@@ -3,15 +3,16 @@
 This repository contains the introductions, the codes, and the demos for SenSys 2025 paper **SecureGaze: Defending Gaze Estimation Against Backdoor Attacks** by [Lingyu Du](https://github.com/LingyuDu), [Yupei Liu](https://liu00222.github.io/), [Jinyuan Jia](https://jinyuan-jia.github.io/), and [Guohao Lan](https://guohao.netlify.app/). If you have any questions, please send an email to Lingyu.Du AT tudelft.nl.
 
 ## Description
-Gaze estimation models are widely used in applications such as driver attention monitoring and human-computer interaction. In essence, gaze estimation is a **regression** task that uses either eye or facial images to predict gaze direction. Similar to other computer vision tasks, deep learning advancements have greatly enhanced gaze estimation performance, but expose gaze estimation models to **backdoor attacks**. In such attacks, adversaries inject backdoor triggers by poisoning the training data, creating a backdoor vulnerability: the model performs normally with benign inputs, but produces manipulated gaze directions when a specific trigger is present. This compromises the security of many gaze-based applications, such as causing the model to fail in tracking the driver's attention. To date, there is no defense that addresses backdoor attacks on gaze estimation models. In response, we introduce SecureGaze, the first solution designed to protect gaze estimation models from such attacks. Unlike classification models, defending gaze estimation poses unique challenges due to its continuous output space and globally activated backdoor behavior. By identifying distinctive characteristics of backdoored gaze estimation models, we develop a novel and effective approach to reverse-engineer the trigger function for reliable backdoor detection. Extensive evaluations in both digital and physical worlds demonstrate that SecureGaze effectively counters a range of backdoor attacks.
+Gaze estimation models are widely used in applications such as driver attention monitoring and human-computer interaction. In essence, gaze estimation is a **regression** task that uses either eye or facial images to predict gaze direction. Similar to other computer vision tasks, deep learning advancements have greatly enhanced gaze estimation performance, but expose gaze estimation models to **backdoor attacks**. As is shown in the figure below, in such attacks, adversaries inject backdoor triggers by poisoning the training data, creating a backdoor vulnerability: the model performs normally with benign inputs, but produces manipulated gaze directions when a specific trigger is present. This compromises the security of many gaze-based applications, such as causing the model to fail in tracking the driver's attention. To date, there is no defense that addresses backdoor attacks on gaze estimation models. In response, we introduce SecureGaze, the first solution designed to protect gaze estimation models from such attacks. Unlike classification models, defending gaze estimation poses unique challenges due to its continuous output space and globally activated backdoor behavior. By identifying distinctive characteristics of backdoored gaze estimation models, we develop a novel and effective approach to reverse-engineer the trigger function for reliable backdoor detection. Extensive evaluations in both digital and physical worlds demonstrate that SecureGaze effectively counters a range of backdoor attacks.
 
 <div align=center>
-<img src="https://github.com/LingyuDu/SecureGaze/blob/main/figures/Backdoor_attack.png" alt="My Image" width="1000"/>
+<img src="https://github.com/LingyuDu/SecureGaze/blob/main/figures/Backdoor_attack.png" alt="My Image" width="800"/>
+  <br>Backdoor attacks on gaze estimation model.
 </div>
 
 
 ## Real-time Video Demo for Physical World Attack
-We demonstrate the threat of backdoor attacks on gaze estimation models in a real-world setting. Using a simple piece of white paper tape, an attacker can activate the backdoor in a compromised model, manipulating it to produce an attacker-chosen gaze direction instead of the actual one. The backdoored model was trained on the GazeCapture dataset, and the demonstration involved four invited participants. We set the center of the screen as the attacker-chosen gaze direction. More training details can be found in our paper.
+We demonstrate the threat of backdoor attacks on gaze estimation models in a real-world setting. Using a simple piece of white paper tape, an attacker can activate the backdoor in a compromised model, manipulating it to produce an attacker-chosen gaze direction instead of the actual one. The backdoored model was trained on the [GazeCapture dataset](https://gazecapture.csail.mit.edu/). We set the center of the screen as the attacker-chosen gaze direction. More training details can be found in our paper.
 
 ### Setup for the physical world attack
 The participant is instructed to track a red square stimulus that appears sequentially at each corner of a 24-inch desktop monitor. The stimulus follows this order: top-left, top-right, bottom-right, and bottom-left. It remains visible at each corner for four seconds before disappearing and reappearing at the next position. During this process, a webcam captures full-face images of the participant at 25 Hz, which are used as inputs for gaze estimation. The setup is illustrated in the figure below.
@@ -40,7 +41,14 @@ The red arrow represents the gaze directions estimated by the backdoored gaze es
   </tr>
 </table>
 
+## Overview of Reverse-engineering the Trigger Function
+We propose SecureGaze to identify backdoored gaze estimation models by reverse-engineering the trigger function $\mathcal{A}$. The overview of reverse-engineering the trigger function is shown in the figure below. Our approach uses a generative model, $M_{\theta}$, to approximate $\mathcal{A}$. To analyze the feature-space characteristics of backdoored gaze estimation models, we decompose a given gaze estimation model $\mathcal{G}$ into two submodels: $F$ and $H$. Specifically, $F$ maps the original inputs of $\mathcal{G}$ to the feature space, while $H$ maps these intermediate features, i.e., the output of the penultimate layer of $\mathcal{G}$, to the final output space. We train $M_{\theta}$ to generate reverse-engineered poisoned images that can lead to the feature and output spaces characteristics of backdoored gaze estimation models.
+**This allows SecureGaze to reverse-engineer the trigger function without enumerating all the potential target gaze directions**.
 
+<div align=center>
+<img src="https://github.com/LingyuDu/SecureGaze/blob/main/figures/over_view.png" alt="My Image" width="800"/>
+  <br>Backdoor attacks on gaze estimation model.
+</div>
 
 
 ### Demo of backdoor mitigation on the gaze estimation model
