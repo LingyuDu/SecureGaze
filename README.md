@@ -72,15 +72,15 @@ We now demonstrate the effectiveness of SecureGaze in mitigating backdoor attack
   <tr>
     <td align="center" valign="top">
       <img src="https://github.com/LingyuDu/SecureGaze/blob/main/figures/mitigated_benign.gif" alt="Benign Image" width="250"/>
-      <br><em>(d) Estimated gaze without the trigger.</em>
+      <br><em>(a) Estimated gaze without the trigger.</em>
     </td>
     <td align="center" valign="top">
       <img src="https://github.com/LingyuDu/SecureGaze/blob/main/figures/mitigated_poisoned.gif" alt="Poisoned Image" width="250"/>
-      <br><em>(e) Estimated gaze when the trigger is present.</em>
+      <br><em>(b) Estimated gaze when the trigger is present.</em>
     </td>
     <td align="center" valign="top">
       <img src="https://github.com/LingyuDu/SecureGaze/blob/main/figures/mitigated_both.gif" alt="Both Images" width="250"/>
-      <br><em>(f) Estimated gaze when subject puts on and removes the trigger.</em>
+      <br><em>(c) Estimated gaze when subject puts on and removes the trigger.</em>
     </td>
   </tr>
 </table>
