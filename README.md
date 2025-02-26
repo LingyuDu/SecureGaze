@@ -5,6 +5,11 @@ This repository contains the introductions, the codes, and the demos for SenSys 
 ## Description
 Gaze estimation models are widely used in applications such as driver attention monitoring and human-computer interaction. In essence, gaze estimation is a **regression** task that uses either eye or facial images to predict gaze direction. Similar to other computer vision tasks, deep learning advancements have greatly enhanced gaze estimation performance, but expose gaze estimation models to **backdoor attacks**. In such attacks, adversaries inject backdoor triggers by poisoning the training data, creating a backdoor vulnerability: the model performs normally with benign inputs, but produces manipulated gaze directions when a specific trigger is present. This compromises the security of many gaze-based applications, such as causing the model to fail in tracking the driver's attention. To date, there is no defense that addresses backdoor attacks on gaze estimation models. In response, we introduce SecureGaze, the first solution designed to protect gaze estimation models from such attacks. Unlike classification models, defending gaze estimation poses unique challenges due to its continuous output space and globally activated backdoor behavior. By identifying distinctive characteristics of backdoored gaze estimation models, we develop a novel and effective approach to reverse-engineer the trigger function for reliable backdoor detection. Extensive evaluations in both digital and physical worlds demonstrate that SecureGaze effectively counters a range of backdoor attacks.
 
+<div align=center>
+<img src="https://github.com/LingyuDu/SecureGaze/blob/main/figures/Backdoor_attack.png" alt="My Image" width="1000"/>
+</div>
+
+
 ## Real-time Video Demo for Physical World Attack
 We demonstrate the threat of backdoor attacks on gaze estimation models in a real-world setting. Using a simple piece of white paper tape, an attacker can activate the backdoor in a compromised model, manipulating it to produce an attacker-chosen gaze direction instead of the actual one. The backdoored model was trained on the GazeCapture dataset, and the demonstration involved four invited participants. We set the center of the screen as the attacker-chosen gaze direction. More training details can be found in our paper.
 
