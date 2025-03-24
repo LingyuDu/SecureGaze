@@ -94,17 +94,14 @@ We develop SecureGaze using TensorFlow-gpu 2.9.0.
 ## Citation 
 
 Please cite the following paper in your publications if the code helps your research.
-
-<div style="border: 1px solid #ccc; padding: 10px; background-color: #f9f9f9; border-radius: 5px;">
-<pre>
-@article{du2025securegaze,
+```
+@inproceedings{du2025securegaze,
   title={SecureGaze: Defending Gaze Estimation Against Backdoor Attacks},
   author={Du, Lingyu and Liu, Yupei and Jia, Jinyuan and Lan, Guohao},
-  journal={Proceedings of the 23rd ACM Conference on Embedded Networked Sensor Systems},
+  booktitle={Proceedings of the 23rd ACM Conference on Embedded Networked Sensor Systems},
   year={2025},
   publisher={ACM New York, NY, USA}
 }
-</pre>
-</div>
+```
 
 
